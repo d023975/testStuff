@@ -1,3 +1,5 @@
+import Person from './Person';
+
 const array1 = [ 1, 2, 3, 4 ];
 const reducer = (accumulator, currentValue) => {
 	return accumulator + currentValue; // If no initialValue is supplied, the first element in the array will be used as the initial accumulator value and skipped as currentValue.
@@ -20,10 +22,104 @@ const vote = {
 	]
 };
 
-function myVoteFunction({ title, description , choices: choice }) {
-    console.log(choice);
-
-
+function myVoteFunction({ title, description, choices: choice }) {
+	console.log(choice);
 }
 
 myVoteFunction(vote);
+
+function f1() {
+	'use strict';
+	return this;
+}
+// In Node:
+console.log(f1() === global); // true without strict
+
+console.log(f1.apply(global) === global); // true with strict
+console.log(f1.call(global) === global); // true with strict
+
+console.log((() => this === global)());
+
+console.log(Math.max.apply(this, [ 1, 3, 3, 43, 34, 334, 3, 3, 4 ]));
+
+function sum(x, y, z) {
+	return x + y + z;
+}
+
+let arr = [ 1, 2, 3, 4, 5, 6 ];
+
+console.log(sum(...arr));
+
+// Block scope
+{
+	let b = 1;
+	console.log('b has only local scope and no hoisting');
+}
+
+//Template Strings
+// Use expressions and var in Strings
+{
+	const name = 'Hugo';
+
+	console.log(`My name is ${name}`);
+	console.log(`I am ${12 * 356} days old`);
+}
+
+// Destructuring  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+//Classes
+{
+	class Person {
+		constructor(name) {
+			this.name = name;
+		}
+		getName() {
+			return this.name;
+		}
+	}
+
+	const carlos = new Person('Carlos');
+	carlos.getName();
+}
+//Classes read only props
+{
+	class Person {
+		constructor(name) {
+			this._name = name;
+		}
+		get name() {
+			return this._name;
+		}
+	}
+
+	const carlos = new Person('Carlos');
+	console.log(carlos.name);
+
+	//Inheritance
+	class Programmer extends Person {
+		constructor(name, language) {
+			super(name);
+			this.language = language;
+		}
+		get name() {
+			return `Programmer ${super.name}`;
+		}
+		code() {
+			return `${this.name} codes in ${this.language}`;
+		}
+	}
+
+	const peter = new Programmer('Peter', 'Java');
+	console.log(peter.name);
+	console.log(peter.code());
+}
+{
+	//Extended object literals
+	let name = `CarlosCP`;
+	const person = {
+		name,
+		toString() {
+			return this.name;
+		}
+	};
+}
