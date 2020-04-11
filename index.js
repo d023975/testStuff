@@ -122,4 +122,8 @@ console.log(sum(...arr));
 			return this.name;
 		}
 	};
+	console.log(person.name);
 }
+
+const importedPerson = new Person('CalosCP');
+console.log(importedPerson.name);
