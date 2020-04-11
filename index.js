@@ -1,4 +1,9 @@
 import Person from './Person';
+import Programmer from './Programmer';
+
+import { stuff } from './Person';
+import { stuff as differentFunction , moreStuff as anotherFunction} from './Person';
+import * as everything from './Person';
 
 const array1 = [ 1, 2, 3, 4 ];
 const reducer = (accumulator, currentValue) => {
@@ -127,3 +132,13 @@ console.log(sum(...arr));
 
 const importedPerson = new Person('CalosCP');
 console.log(importedPerson.name);
+
+const importedProgrammer = new Programmer('Carlos', 'JavaScript');
+console.log(importedProgrammer.name);
+
+stuff(); // imported function
+differentFunction(); // stuff function but different name
+anotherFunction(); // see imports above
+everything.moreStuff(); // see imports above
+everything.stuff(); // see imports above
+ 
