@@ -43,3 +43,6 @@ npm install --save @babel/core @babel/cli @babel/preset-env nodemon rimraf
 ```
 
 npm run transpile
+
+see package.json for dev automation watch:dev and nodemonConfig
+
