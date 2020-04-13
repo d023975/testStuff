@@ -178,4 +178,6 @@ everything.stuff(); // see imports above
 
 	const mergedObj = { ...obj1, ...obj2 };
 	// Object { foo: "baz", x: 42, y: 13 }
+
+	console.log(clonedObj);
 }
