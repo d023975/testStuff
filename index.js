@@ -1,4 +1,4 @@
-import Person from './Person';
+import Person from './Person'; // you need babel for the imports
 import Programmer from './Programmer';
 
 import { stuff } from './Person';
@@ -168,16 +168,37 @@ everything.stuff(); // see imports above
 	func('a', 'b', 'c');
 }
 {
-	// spread operator  // does not work with node v12.13.1 , to ensure I extra copied from 
+	// spread operator  // does not work with node v12.13.1 , to ensure I extra copied from
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+	// you need babel for this
+	const a = 25;
+
 	const obj1 = { foo: 'bar', x: 42 };
 	const obj2 = { foo: 'baz', y: 13 };
 
-	const clonedObj = { ...obj1 };
+	const clonedObj = { z: a, ...obj1 };
 	// Object { foo: "bar", x: 42 }
 
 	const mergedObj = { ...obj1, ...obj2 };
 	// Object { foo: "baz", x: 42, y: 13 }
 
 	console.log(clonedObj);
+}
+{
+	//Object assign
+	const obj1 = { a: 1 };
+	const obj2 = { b: 2, c: 2 };
+	const obj3 = {
+		...{},
+		...obj1,
+		...obj2
+	};
+	console.log(obj3);
+	const obj4 = Object.assign({}, obj1, obj2);
+	console.log(obj4);
+}
+{
+	//Promises
+ 
+
 }
