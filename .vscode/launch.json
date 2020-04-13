@@ -6,12 +6,15 @@
     "configurations": [
         {
             "type": "node",
+            "runtimeVersion": "12.13.1",
             "request": "launch",
             "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\start.js"
+            "program": "${workspaceFolder}\\dist\\start.js",
+            
+            "runtimeArgs" : ["--harmony"] 
         }
     ]
 }

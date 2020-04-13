@@ -2,7 +2,7 @@ import Person from './Person';
 import Programmer from './Programmer';
 
 import { stuff } from './Person';
-import { stuff as differentFunction , moreStuff as anotherFunction} from './Person';
+import { stuff as differentFunction, moreStuff as anotherFunction } from './Person';
 import * as everything from './Person';
 
 const array1 = [ 1, 2, 3, 4 ];
@@ -141,4 +141,41 @@ differentFunction(); // stuff function but different name
 anotherFunction(); // see imports above
 everything.moreStuff(); // see imports above
 everything.stuff(); // see imports above
- 
+
+{
+	// arrow functions
+	const func1 = (par) => par;
+	const func2 = (par) => {
+		par;
+	};
+	const func3 = (par = 'DEFAULT') => {
+		par;
+		return par;
+	};
+	console.log(func1('test'));
+	console.log(func2('test')); //undefined
+	console.log(func3('test'));
+	console.log(func3());
+}
+{
+	//default and rest params
+	// see also "DEFAULT"  above
+
+	const func = (a, ...others) => {
+		console.log(a);
+		others.forEach((el) => console.log(el));
+	};
+	func('a', 'b', 'c');
+}
+{
+	// spread operator  // does not work with node v12.13.1 , to ensure I extra copied from 
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+	const obj1 = { foo: 'bar', x: 42 };
+	const obj2 = { foo: 'baz', y: 13 };
+
+	const clonedObj = { ...obj1 };
+	// Object { foo: "bar", x: 42 }
+
+	const mergedObj = { ...obj1, ...obj2 };
+	// Object { foo: "baz", x: 42, y: 13 }
+}
